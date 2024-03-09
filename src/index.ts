@@ -18,22 +18,44 @@ const orang1: orangType = {
     umur: 12
 }
 
-function pertambahan (angka1:number,angka2:number) : number {
+function pertambahan(angka1: number, angka2: number): number {
     return angka1 + angka2;
 }
 
 interface kelas {
-    nama:string,
-    jumlahSiswa:number,
+    nama: string,
+    jumlahSiswa: 16 | 32, // ini hanya diisi 16 atau 32
 }
 
-function buatKelas (kelas :kelas) : void {
-    console.log(kelas);
+interface kelas { // bisa nambah type
+    jumlahMeja: number,
 }
 
-buatKelas({
-    nama:"2",
-    jumlahSiswa:32
-});
+interface lab extends kelas { // inherinten interface
+    jumlahKomputer: number,
+}
 
+function buatKelas(kelas: kelas): void {
+    console.log({ kelas });
+}
 
+function buatLab(lab: lab): void {
+    console.log({ lab })
+}
+
+const ruang2: kelas = {
+    nama: "Ruang2",
+    jumlahSiswa: 32,
+    jumlahMeja: 16,
+}
+
+buatKelas(ruang2);
+
+const labRpl: lab = {
+    nama: "RPL",
+    jumlahSiswa: 32,
+    jumlahMeja: 16,
+    jumlahKomputer: 32,
+}
+
+buatLab(labRpl);
